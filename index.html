@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/img/favicon.png">
+  <meta name="twitter:site" content="@indy_companion">
+  <meta name="twitter:title" content="Montreal Indy Companion">
+  <meta name="twitter:description"
+    content="Montreal's independent sex workers (escort) collective Indy Companion - The ethical way to meet">
+  <title>Montreal Indy Companion</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <!-- bootstrap-select & requirements  -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css"
+    integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css"
+    integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    .ratio {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 150%;
+      /* % of width, defines aspect ratio*/
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .tagline {
+      font-size: .8em;
+      line-height: 1.1;
+      margin-bottom: 0px;
+      color: #666;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script type="text/html" id="memberList">
+    <% _.each(items,function(item,key,list){
+      var url = (item.url === null) ? "" : (item.url.startsWith('https://') || item.url.startsWith('http://')) ? item.url : 'https://' + item.url;
+      %>
+    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
+      <div class="card">
+        <a href="<%= url %>" title="Click to visit <%= item.name %>'s website" target="_blank">
+          <div class="ratio" style="background-image: url('img/companions/<%= item.id %>.jpg')"></div>
+        </a>
+        <div class="card-body" style="padding: 14px;">
+          <h5 class="card-title"><%= item.name %></h5>
+          <div class="small tagline"><%= item.tagline %></div>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+  </script>
+
+  <div class="container">
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+      <strong>NEW!</strong> Subscribe to our <a href="https://sendy.indycompanion.com/subscription?f=zn763CmSK9PnQCOwEuZ9xLWXpvLc0BIi1gPQ2Vjt3nGSdU8uw5WQgzRLlroGHscKaO">Mailing list</a> for news, promotions and events! (sent monthly).
+      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+      </button>
+    </div>
+  </div>
+
+  <div class="px-4 mt-5 mb-1 text-center">
+    <img class="d-block mx-auto mb-4" src="img/logo.png" alt width="120">
+    <h1>Montreal Indy Companion</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Montreal's independent sex workers collective - The ethical way to meet.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row my-5">
+
+      <div class="col-6 col-sm-7 col-lg-4 col-xl-3">
+        <div class="form-group">
+          <label for="keyword">Keyword Search</label>
+          <div class="search">
+            <input type="keyword" class="form-control" id="search" placeholder="Specific keyword">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-5 col-lg-4 col-xl-2">
+        <div class="form-group">
+          <label for="genderrace">Gender & Race</label>
+          <select id="genderrace" name="genderrace" class="form-control selectpicker" title="Any gender or race"
+            multiple>
+            <optgroup label="Gender" id="gender">
+              <option>Woman</option>
+              <option>Non-binary</option>
+              <option>Trans</option>
+              <option>Man</option>
+            </optgroup>
+            <optgroup label="Race" id="race">
+              <option>Asian</option>
+              <option>Black</option>
+              <option>Indigenous</option>
+              <option>Mixed</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-6 col-lg-4 col-xl-1">
+        <div class="form-group">
+          <label for="age">Age</label>
+          <select id="age" name="age" class="form-control selectpicker" title="Any age" multiple>
+            <option>20s</option>
+            <option>30s</option>
+            <option>40s</option>
+            <option>50s</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-6 col-lg-4 col-xl-2">
+        <div class="form-group">
+          <label for="body">Body</label>
+          <select id="body" name="body" class="form-control selectpicker" title="No preference" multiple>
+            <optgroup label="Body type" id="body_type">
+              <option>Slim</option>
+              <option>Athletic</option>
+              <option>Average</option>
+              <option>Curvy</option>
+              <option>Plus size</option>
+            </optgroup>
+            <optgroup label="Height" id="height">
+              <option>Short</option>
+              <option>Median</option>
+              <option>Tall</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-6 col-lg-4 col-xl-2">
+        <div class="form-group">
+          <label for="bodyfeatures">Body features</label>
+          <select id="bodyfeatures" name="bodyfeatures" class="form-control selectpicker" title="No preference"
+            multiple>
+            <optgroup label="Tattoos & body mods" id="tattoos" data-max-options="2">
+              <option title="No tattoos">None</option>
+              <option title="Some tattoos">Some</option>
+              <option title="Lots of tattoos">Lots</option>
+            </optgroup>
+            <optgroup label="Body hair" id="body_hair" data-max-options="2">
+              <option title="Smooth body hair">Smooth</option>
+              <option title="Trimmed body hair">Trimmed</option>
+              <option title="Natual body hair">Natural</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-6 col-lg-4 col-xl-2">
+        <div class="form-group">
+          <label for="services_location">Services & Location</label>
+          <select id="services_location" name="services_location" class="form-control selectpicker" title="Any service"
+            multiple>
+            <optgroup label="Services" id="services">
+              <option>Escort</option>
+              <option>Kink / BDSM</option>
+              <option>Online</option>
+              <option>Other erotic services</option>
+              <option>Same day</option>
+            </optgroup>
+            <optgroup label="Location" id="location">
+              <option>Incall</option>
+              <option>Outcall</option>
+              <option>FMTY</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row g-4" id="members">
+    </div>
+
+    <div class="row mt-5 mb-5 p-4 pb-0 pe-lg-0 align-items-center rounded-3 border shadow-lg">
+      <div class="col-lg-12 p-3 p-lg-3">
+        <h1 class="display-6 fw-bold lh-1">About</h1>
+        <p class="lead">
+          Montreal Indy Companion is the best way to meet independent sex workers in Montreal.</p>
+
+        <p>Founded in 2014, Indy Companion is a collective of independent adult service providers working in Montreal,
+          including escorts, BDSM pros, erotic massage providers, virtual service providers, travel companions, and
+          more! While the majority of our members are based in Montreal, many offer fly-me-to-you meetings, or tour
+          domestically and/or internationally.</p>
+
+        <p>The main functions of our collective is to provide our members with ethical advertising platform(s),
+          networking spaces, resources, and to provide our clients with a comprehensive directory of Montreal’s top
+          verified, ethical-to-meet providers.</p>
+
+        <p>Our collective values center around the principles of mutual respect, inclusivity, privacy, solidarity,
+          community, and independence; all members of Indy Companion are expected to abide by the core principles and
+          guidelines we have developed based on these principles.
+
+        <p>If you're a provider and wish to join our collective, please reach out to orientation@indycompanion.com</p>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Underscore templating engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.6/underscore-min.js"
+    integrity="sha512-2V49R8ndaagCOnwmj8QnbT1Gz/rie17UouD9Re5WxbzRVUGoftCu5IuqqtAM9+UC3fwfHCSJR1hkzNQh/2wdtg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Bootstrap-select -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"
+    integrity="sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    var outputDiv = document.querySelector('#members');
+    var template = document.querySelector('#memberList').innerHTML;
+    var companions = [];
+
+    // Shoutout to Mr. Polywhirl for this <3 https://stackoverflow.com/a/61147776
+    class Filter {
+      constructor() {
+        this.filters = []
+      }
+      chain() {
+        this.filters = []
+        return this
+      }
+      or(predicate) {
+        this.filters.push({
+          fn: predicate,
+          op: 'or'
+        })
+        return this
+      }
+      and(predicate) {
+        this.filters.push({
+          fn: predicate,
+          op: 'and'
+        })
+        return this
+      }
+      execute(items) {
+        return items.reduce((results, item) =>
+          this.__shouldKeepItem(item) ? results.concat(item) : results, [])
+      }
+      /** @private */
+      __startCondition() {
+        return this.filters.length ? this.filters[0].op === 'and' ? 1 : 0 : 0
+      }
+      /** @private */
+      __shouldKeepItem(item) {
+        return this.filters.reduce((keep, filter) => {
+          switch (filter.op) {
+            case 'or':
+              return keep || filter.fn(item)
+            case 'and':
+              return keep && filter.fn(item)
+            default:
+              return keep
+          }
+        }, this.__startCondition())
+      }
+    }
+
+    $('#search').on('keyup', function (e) {
+      filterCompanions();
+    });
+
+    $('.selectpicker').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
+      filterCompanions();
+    });
+
+    function filterCompanions() {
+      let gender = $('#gender option:checked').map(function () {
+        return this.value
+      }).get();
+      let race = $('#race option:checked').map(function () {
+        return this.value
+      }).get();
+      let body_type = $('#body_type option:checked').map(function () {
+        return this.value
+      }).get();
+      let height = $('#height option:checked').map(function () {
+        return this.value
+      }).get();
+      let tattoos = $('#tattoos option:checked').map(function () {
+        return this.value
+      }).get();
+      let body_hair = $('#body_hair option:checked').map(function () {
+        return this.value
+      }).get();
+      let service = $('#services option:checked').map(function () {
+        return this.value
+      }).get();
+      let location = $('#location option:checked').map(function () {
+        return this.value
+      }).get();
+
+      const Predicates = {
+        keywords: x => $('#search').val().length == 0 || (!(x.keywords === null) && $('#search').val().toLowerCase()
+          .split(' ').every(y => (x.name.toLowerCase() + ', ' + x.keywords.toLowerCase()).includes(y.replace(' ', '')))),
+        gender: x => gender.length == 0 || _.intersection(gender, x.gender).length > 0,
+        race: x => race.length == 0 || _.intersection(race, x.race).length > 0,
+        age: x => $('#age').val().length == 0 || _.intersection($('#age').val(), x.age).length > 0,
+        services: x => service.length == 0 || _.intersection(service, x.services).length >
+          0,
+        location: x => location.length == 0 || _.intersection(location, x.location).length >
+          0,
+        body_type: x => body_type.length == 0 || _.intersection(body_type, x.body_type).length > 0,
+        height: x => height.length == 0 || _.intersection(height, x.height).length > 0,
+        tattoos: x => tattoos.length == 0 || _.intersection(tattoos, x.tattoos).length > 0,
+        body_hair: x => body_hair.length == 0 || _.intersection(body_hair, x.body_hair).length > 0,
+      }
+
+      var filter = new Filter().chain().and(Predicates.keywords).and(Predicates.gender).and(Predicates.race).and(
+          Predicates.age).and(Predicates
+          .services).and(Predicates.body_type).and(Predicates.height).and(Predicates.tattoos).and(Predicates.body_hair)
+        .and(Predicates.location)
+      outputDiv.innerHTML = _.template(template)({
+        items: filter.execute(companions)
+      });
+    }
+
+    fetch('companions.json')
+      .then(result => result.json())
+      .then((data) => {
+        companions = _.shuffle(data);
+        filterCompanions();
+        // console.log('Debug: Website data', data);
+      })
+      .catch(err => {
+        throw err
+      });
+  </script>
+</body>
+
+</html>
